@@ -1,6 +1,13 @@
 import React from "react";
 
 const AddProfile = (props) => {
+    const {
+        editID,
+        form,
+        updateForm,
+        addToList,   
+        editBooks,                    
+    } = props  
   return (
     <div>
       <div className="profile-form">
@@ -32,9 +39,16 @@ const AddProfile = (props) => {
           }}
         />
         <br />
-        <button type="submit" onClick={addToList}>
-          Submit
-        </button>
+        {
+                editID?
+                <button onClick={editBooks}>
+                    Edit Book
+                </button>
+                :
+                <button onClick={addToList}>
+                    Add To List
+                </button>
+            }
       </div>
     </div>
   );

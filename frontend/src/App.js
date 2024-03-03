@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import AddProfile from "./AddProfile";
 
+
 function App() {
   const [page_tab, setTabs] = useState(0)
   const [bookList,setStudentList] = useState([])
 
+  const [editID,setEditID] = useState(null)
 
   const [form,setForm] = useState(
     {
@@ -211,7 +213,7 @@ function deleteBook(id){
         }
         {
              page_tab == 1?
-                <AddProfile updateForm ={updateProfile} addToList = {addBooks} />
+                <AddProfile form= {form} updateForm ={updateProfile} addToList = {addBooks} editID={editID} editBooks= {editBooks} />
                 :
                 null
 
