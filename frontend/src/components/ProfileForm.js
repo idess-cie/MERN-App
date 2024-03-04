@@ -8,55 +8,63 @@ const ProfileForm = () => {
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const profile = {name, house, bloodline}
+    const profile = { name, house, bloodline };
 
-    const response = await fetch('/api/profiles',{
-        method: 'POST',
-        body: JSON.stringify(profile),
-        headers:{
-        'Content-Type': 'application/json'
-        } 
-    })
-    const json = await response.json()
+    const response = await fetch("/api/profiles", {
+      method: "POST",
+      body: JSON.stringify(profile),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const json = await response.json();
 
     if (!response.ok) {
-        setError(json.error)
-    } 
-    if (response.ok) {
-        setName('')
-        setHouse('')
-        setBloodline('')
-        setError(null)
-        console.log('New Student Added', json)
+      setError(json.error);
     }
-  }
+    if (response.ok) {
+      setName("");
+      setHouse("");
+      setBloodline("");
+      setError(null);
+      console.log("New Student Added", json);
+    }
+  };
 
   return (
     <form className="addnew" onSubmit={handleSubmit}>
       <label>Name</label>
-      <input
-        placeholder="Enter Student Name..."
-        type="text"
-        onChange={(e) => setName(e.target.value)}
-        value={name}
-      />
+      <div className="input-con">
+        <input
+          placeholder="Enter Student Name..."
+          type="text"
+          onChange={(e) => setName(e.target.value)}
+          value={name}
+          className="input"
+        />
+      </div>
       <label>House</label>
-      <input
-        placeholder="Enter House..."
-        type="text"
-        onChange={(e) => setHouse(e.target.value)}
-        value={house}
-      />
+      <div className="input-con">
+        <input
+          placeholder="Enter House..."
+          type="text"
+          onChange={(e) => setHouse(e.target.value)}
+          value={house}
+          className="input"
+        />
+      </div>
       <label>Bloodline</label>
-      <input
-        placeholder="Enter Bloodline..."
-        type="text"
-        onChange={(e) => setBloodline(e.target.value)}
-        value={bloodline}
-      />
-
+      <div className="input-con">
+        <input
+          placeholder="Enter Bloodline..."
+          type="text"
+          onChange={(e) => setBloodline(e.target.value)}
+          value={bloodline}
+          className="input"
+        />
+      </div>
       <button>Add Student</button>
       {error && <div className="error">{error}</div>}
     </form>

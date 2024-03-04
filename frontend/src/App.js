@@ -3,8 +3,10 @@ import "./styles/App.css";
 
 import ProfileDetails from "./components/ProfileDetails";
 import ProfileForm from "./components/ProfileForm";
+import Archive from "./Archive";
 
 function App() {
+  const [page_tab, setTabs] = useState(0);
   const [profiles, setProfiles] = useState(null);
 
   useEffect(() => {
@@ -20,12 +22,11 @@ function App() {
     fetchProfile();
   });
 
-  return (
-    <div className="App">
-      <h1>Hogwarts Student Profile</h1>
+  function displayProfileList() {
+    return (
       <div className="content">
         <div className="student-card">
-            <h3>Student Profile</h3>
+          <h3>Student Profile</h3>
           {profiles &&
             profiles.map((profiles) => (
               <div className="stud-profile" key={profiles._id}>
@@ -37,6 +38,41 @@ function App() {
           <h3>Profile Forms</h3>
           <ProfileForm />
         </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="App">
+      <h1>Hogwarts Student Profile</h1>
+      <div className="tabs">
+        <div className="btns">
+          <button
+            class="button"
+            onClick={() => {
+              setTabs(0);
+            }}
+          >
+            <span class="button_lg">
+              <span class="button_sl"></span>
+              <span class="button_text">Student List</span>
+            </span>
+          </button>
+
+          <button
+            class="button"
+            onClick={() => {
+              setTabs(1);
+            }}
+          >
+            <span class="button_lg">
+              <span class="button_sl"></span>
+              <span class="button_text">Archive</span>
+            </span>
+          </button>
+        </div>
+        {page_tab === 0 ? displayProfileList() : null}
+        {page_tab === 1 ? <Archive /> : null}
       </div>
     </div>
   );
