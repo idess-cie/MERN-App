@@ -15,6 +15,10 @@ const profileSchema = new Schema({
     bloodline: {
         type: String,
         required: true
+    },
+    isArchive: {
+        type: Boolean,
+        default: false
     }
 }, {timestamps: true})
 

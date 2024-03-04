@@ -1,13 +1,7 @@
 import React from "react";
 
 const AddProfile = (props) => {
-    const {
-        editID,
-        form,
-        updateProfile,
-        addToList,   
-        editProfile,                    
-    } = props  
+  const { form, updateProfile, addToList } = props;
   return (
     <div>
       <div className="profile-form">
@@ -29,8 +23,10 @@ const AddProfile = (props) => {
           onChange={(e) => {
             updateProfile("house", e);
           }}
-        /><br/>
-        <label>BloodLine</label><br/>
+        />
+        <br />
+        <label>BloodLine</label>
+        <br />
         <input
           placeholder="Enter Bloodline"
           value={form.bloodline}
@@ -39,16 +35,8 @@ const AddProfile = (props) => {
           }}
         />
         <br />
-        {
-                editID?
-                <button onClick={editProfile}>
-                    Edit Book
-                </button>
-                :
-                <button onClick={addToList}>
-                    Add To List
-                </button>
-            }
+
+        <button onClick={addToList}>Add To List</button>
       </div>
     </div>
   );
