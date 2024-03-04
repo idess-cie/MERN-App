@@ -4,9 +4,9 @@ const AddProfile = (props) => {
     const {
         editID,
         form,
-        updateForm,
+        updateProfile,
         addToList,   
-        editBooks,                    
+        editProfile,                    
     } = props  
   return (
     <div>
@@ -19,7 +19,7 @@ const AddProfile = (props) => {
           onChange={(e) => {
             updateProfile("name", e);
           }}
-        />{" "}
+        />
         <br />
         <label>House</label>
         <br />
@@ -29,8 +29,8 @@ const AddProfile = (props) => {
           onChange={(e) => {
             updateProfile("house", e);
           }}
-        />
-        <label>BloodLine</label>
+        /><br/>
+        <label>BloodLine</label><br/>
         <input
           placeholder="Enter Bloodline"
           value={form.bloodline}
@@ -41,7 +41,7 @@ const AddProfile = (props) => {
         <br />
         {
                 editID?
-                <button onClick={editBooks}>
+                <button onClick={editProfile}>
                     Edit Book
                 </button>
                 :

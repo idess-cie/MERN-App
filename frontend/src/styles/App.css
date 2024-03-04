@@ -1,0 +1,55 @@
+:root {
+    background-color: antiquewhite;
+
+}
+.App {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.App > h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.App > .content {
+    display: flex;
+    justify-content: space-around;
+}
+
+.App > .content > .student-card {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 40%;
+    background-color: white;
+    border-radius: 9px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    gap: 10px;
+}
+.App > .content > .student-card > h3 {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: white;
+}
+
+.App > .content > .forms {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    height: 100%;
+    width: 40%;
+    background-color: white;
+    border-radius: 9px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.App > .content > .forms > h3 {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: white;
+}
