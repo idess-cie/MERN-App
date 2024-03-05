@@ -41,8 +41,36 @@ const ProfileDetails = ({ profiles }) => {
     setIsEditing(true); // Open the form when edit button is clicked
   };
 
+
+  const [isArchived, setIsArchived] = useState(profiles.isArchived);
+  const handleArchiveToggle = async () => {
+    try {
+      const response = await fetch(`/api/profiles/${profiles._id}/archive`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      setIsArchived(!isArchived);
+      console.log(data.message);
+    } catch (error) {
+      console.error('Error archiving/unarchiving profile:', error);
+      setError('Error archiving/unarchiving profile');
+    }
+  };
   return (
     <div className="profile-details">
+      <div className="arch-btn">
+      <button onClick={handleArchiveToggle}>
+        {isArchived ? 'Unarchive' : 'Archive'}
+      </button>
+      </div>
       <h5>{profiles.name}</h5>
       <ul>
         <li>

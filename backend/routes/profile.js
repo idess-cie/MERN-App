@@ -6,6 +6,7 @@ const {
   getProfiles,
   deleteProfile,
   updateProfile,
+  archiveProfile,
 } = require("../controllers/profilecontrollers");
 
 const router = express.Router();
@@ -24,5 +25,8 @@ router.delete("/:id", deleteProfile);
 
 // UPDATE Profile
 router.patch("/:id", updateProfile);
+
+// ARCHIVE Profile
+router.put('/:id/archive', archiveProfile);
 
 module.exports = router;

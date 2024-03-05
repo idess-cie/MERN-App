@@ -16,7 +16,7 @@ const profileSchema = new Schema({
         type: String,
         required: true
     },
-    isArchive: {
+    isArchived: {
         type: Boolean,
         default: false
     }

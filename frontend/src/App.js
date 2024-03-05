@@ -20,7 +20,7 @@ function App() {
     };
 
     fetchProfile();
-  });
+  }, []);
 
   function displayProfileList() {
     return (
@@ -48,26 +48,26 @@ function App() {
       <div className="tabs">
         <div className="btns">
           <button
-            class="button"
+            className="button"
             onClick={() => {
               setTabs(0);
             }}
           >
-            <span class="button_lg">
-              <span class="button_sl"></span>
-              <span class="button_text">Student List</span>
+            <span className="button_lg">
+              <span className="button_sl"></span>
+              <span className="button_text">Student List</span>
             </span>
           </button>
 
           <button
-            class="button"
+            className="button"
             onClick={() => {
               setTabs(1);
             }}
           >
-            <span class="button_lg">
-              <span class="button_sl"></span>
-              <span class="button_text">Archive</span>
+            <span className="button_lg">
+              <span className="button_sl"></span>
+              <span className="button_text">Archive</span>
             </span>
           </button>
         </div>
