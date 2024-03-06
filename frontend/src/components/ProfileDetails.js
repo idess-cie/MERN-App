@@ -65,26 +65,31 @@ const ProfileDetails = ({ profiles }) => {
     }
   };
   return (
-    <div className="profile-details">
-      <div className="arch-btn">
-      <button onClick={handleArchiveToggle}>
-        {isArchived ? 'Unarchive' : 'Archive'}
-      </button>
-      </div>
-      <h5>{profiles.name}</h5>
-      <ul>
-        <li>
-          <strong>House: </strong>
-          {profiles.house}
-        </li>
-        <li>
-          <strong>BloodLine: </strong>
-          {profiles.bloodline}
-        </li>
-      </ul>
-      <p>{profiles.createdAt}</p>
-
-      {isEditing && (
+      <div className="profile-details">
+        
+        {!isArchived && ( // Only render profile details if not archived
+          <>
+          <div className="arch-btn">
+          <button onClick={handleArchiveToggle}>
+            {isArchived ? 'Unarchive' : 'Archive'}
+          </button>
+        </div>
+            <h5>{profiles.name}</h5>
+            <ul>
+              <li>
+                <strong>House: </strong>
+                {profiles.house}
+              </li>
+              <li>
+                <strong>BloodLine: </strong>
+                {profiles.bloodline}
+              </li>
+            </ul>
+            <p>{profiles.createdAt}</p>
+          </>
+        )}
+    
+        {isEditing && (
           <div className="updateForms">
             <label>Name</label>
             <input
@@ -111,11 +116,12 @@ const ProfileDetails = ({ profiles }) => {
             {error && <div className="error">{error}</div>}
           </div>
         )}
-        {!isEditing && (
+        {!isArchived && !isEditing && (
           <button onClick={handleEdit}>Edit Profile</button>
         )}
-    </div>
-  );
+      </div>
+    );
+    
 };
 
 export default ProfileDetails;

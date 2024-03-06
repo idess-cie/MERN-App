@@ -33,6 +33,7 @@ function App() {
                 <ProfileDetails key={profiles._id} profiles={profiles} />
               </div>
             ))}
+            
         </div>
         <div className="forms">
           <h3>Profile Forms</h3>
