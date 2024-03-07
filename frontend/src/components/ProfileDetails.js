@@ -45,7 +45,7 @@ const ProfileDetails = ({ profiles }) => {
   const [isArchived, setIsArchived] = useState(profiles.isArchived);
   const handleArchiveToggle = async () => {
     try {
-      const response = await fetch(`/api/profiles/${profiles._id}/archive`, {
+      const response = await fetch(`/api/profiles/archive/${profiles._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'

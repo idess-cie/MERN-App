@@ -73,33 +73,31 @@ const updateProfile = async (req, res) => {
 };
 
 const archiveProfile = async (req, res) => {
-    const { id } = req.params;
+  const { id } = req.params;
 
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(404).json({ error: "No  Such Profile" });
-    }
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ error: "Invalid profile ID" });
+  }
 
-    try {
-        const profile = await Profile.findById(id);
+  try {
+      const profile = await Profile.findById(id);
 
-        if (!profile) {
-            return res.status(404).json({ error: "Profile not found" });
-        }
+      if (!profile) {
+          return res.status(404).json({ error: "Profile not found" });
+      }
 
-        // Toggle the isArchived field
-        profile.isArchived = !profile.isArchived;
-        await profile.save();
+      // Toggle the isArchived field
+      profile.isArchived = !profile.isArchived;
+      await profile.save();
 
-        if (profile.isArchived) {
-            res.json({ message: 'Profile archived successfully', profile });
-        } else {
-            res.json({ message: 'Profile unarchived successfully', profile });
-        }
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Server Error' });
-    }
+      const message = profile.isArchived ? 'Profile archived successfully' : 'Profile unarchived successfully';
+      res.json({ message, profile });
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Server Error' });
+  }
 };
+
 
 module.exports = {
   updateProfile,

@@ -27,6 +27,6 @@ router.delete("/:id", deleteProfile);
 router.patch("/:id", updateProfile);
 
 // ARCHIVE Profile
-router.put('/:id/archive', archiveProfile);
+router.put('/archive/:id', archiveProfile);
 
 module.exports = router;
