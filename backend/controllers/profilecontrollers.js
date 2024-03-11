@@ -1,5 +1,5 @@
 const Profile = require("../models/ProfileModel");
-const mongoose = require("mongoose");
+const { ObjectId } = require('mongodb')
 
 // Get All
 const getProfiles = async (req, res) => {
@@ -11,7 +11,7 @@ const getProfiles = async (req, res) => {
 // Get Single
 const getProfile = async (req, res) => {
   const { id } = req.params;
-  if (!mongoose.Types.ObjectId.isValid(id)) {
+  if (!ObjectId.isValid(id)) {
     return res.status(404).json({ error: "No Profile Exist" });
   }
 
@@ -39,7 +39,7 @@ const addProfile = async (req, res) => {
 const deleteProfile = async (req, res) => {
   const { id } = req.params;
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
+  if (!ObjectId.isValid(id)) {
     return res.status(404).json({ error: "No such Profile" });
   }
 
@@ -55,7 +55,7 @@ const deleteProfile = async (req, res) => {
 const updateProfile = async (req, res) => {
   const { id } = req.params;
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
+  if (!ObjectId.isValid(id)) {
     return res.status(404).json({ error: "No  Such Profile" });
   }
 
@@ -75,7 +75,7 @@ const updateProfile = async (req, res) => {
 const archiveProfile = async (req, res) => {
   const { id } = req.params;
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
+  if (!ObjectId.isValid(id)) {
       return res.status(400).json({ error: "Invalid profile ID" });
   }
 
